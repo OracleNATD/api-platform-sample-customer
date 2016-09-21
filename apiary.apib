@@ -1,0 +1,89 @@
+FORMAT: 1A
+HOST: http://customer.oracle.com/
+
+# Customer API
+
+Allows clients to query for customer information. Clients can decide if they want 
+to receive all the details for the particular customer or just the summary. 
+
+## Customers [/customers]
+
+### Get All Customers [GET]
+Returns all customers available
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": "1111",
+                "first_name": "Robert",
+                "last_name": "Smith",
+                "email": "bob.smith@email.com",
+                "phone": "305-235-1199"
+            },
+            {
+                "id": "2222",
+                "first_name": "Monica",
+                "last_name": "Williams",
+                "email": "monica.williams@email.com",
+                "phone": "404-235-0987"
+            },
+            {
+                "id": "3333",
+                "first_name": "James",
+                "last_name": "Jones",
+                "email": "james.jones@email.com",
+                "phone": "212-235-2345"
+            }
+        ]
+
+## Customer Details [/customer/details/{id}]
+
+### Get Customer details [GET]
+Returns all details for a specific customer
+
++ Parameters
+    + id (number) - Customer id.
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": "1111",
+                "first_name": "Robert",
+                "last_name": "Smith",
+                "email": "bob.smith@email.com",
+                "phone": "305-235-1199",
+                "accepts_marketing" : false,
+                "note": "Only available during the evenings",
+                "verified_email": true,
+                "default_address": {
+                    "address1": "Chestnut Street 92",
+                    "address2": "",
+                    "city": "Miami",
+                    "State": "Florida",
+                    "country": "United States",
+                    "zip": "33126"
+            }
+        ]
+
+
+## Customer Summary [/customer/summary/{id}]
+
+### Get Customer Summary [GET]
+Returns only a summary of the customer (id, name, email and phone number).
+
++ Parameters
+    + id (number) - Customer id.
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": "1111",
+                "first_name": "Robert",
+                "last_name": "Smith",
+                "email": "bob.smith@email.com",
+                "phone": "305-235-1199",
+            }
+        ]
